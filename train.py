@@ -8,6 +8,7 @@ import time
 import warnings
 
 from dataset.CVUSA import CVUSA
+from dataset.BrnoUrban import BrnoUrban
 from models.feature_extractor import FeatureExtractor
 from models.siamese_network import SiameseNet
 from criterion.soft_triplet import SoftTripletBiLoss
@@ -82,7 +83,7 @@ parser.add_argument('--mining', action='store_true',
                     help='mining')
 parser.add_argument('--ground-color-space', default='RGB', type=str,
                     help='color space to use for ground images available \
-                        options: `RGB`, `L`)')
+                        options: `RGB`, `L`, `IR`)')
 parser.add_argument('--aerial-color-space', default='RGB', type=str,
                     help='color space to use for aerial images (available \
                         options: `RGB`, `L`)')
@@ -120,14 +121,14 @@ def main():
                 '{}'".format(args.ground_net_weights))
         copy_weights(model, args)
     # create train and val dataloaders
-    train_dataset = CVUSA(root=args.data_dir, 
+    train_dataset = BrnoUrban(root=args.data_dir, 
                           mode='train', 
                           ground_color_space=args.ground_color_space,
                           aerial_color_space=args.aerial_color_space)
-    val_ground_dataset = CVUSA(root=args.data_dir, 
+    val_ground_dataset = BrnoUrban(root=args.data_dir, 
                                mode='test_ground', 
                                ground_color_space=args.ground_color_space)
-    val_aerial_dataset = CVUSA(root=args.data_dir, 
+    val_aerial_dataset = BrnoUrban(root=args.data_dir, 
                                mode='test_aerial', 
                                aerial_color_space=args.aerial_color_space)
     train_sampler = DistributedMiningSampler(train_dataset, 

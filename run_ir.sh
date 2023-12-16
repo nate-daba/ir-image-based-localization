@@ -19,6 +19,6 @@ python train.py \
 --cos \
 --mining \
 --aerial-color-space='RGB' \
---ground-color-space='L' \
---data-dir='/groups/amahalan/NatesData/CVUSA/' \
+--ground-color-space='RGB' \
+--data-dir='/xdisk/amahalan/ndaba/datasets/BrnoUrban/' \
 --ground-net-weights='./results/model_best.pth.tar'

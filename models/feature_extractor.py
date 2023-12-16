@@ -12,10 +12,12 @@ from torchvision import models
 Tensor = torch.Tensor
 
 class FeatureExtractor(nn.Module):
-    """Defines feature extractor model. Uses VGG16 backbone. It directly adopts the first 17 layers of VGG16.
+    """ Defines feature extractor model. Uses VGG16 backbone. It directly adopts 
+        the first 17 layers of VGG16.
     
     Args:
-        initialize_weights (bool): Initialize weights of feature extractor with VGG16 weights from ImageNet-1k.
+        initialize_weights (bool): Initialize weights of feature extractor with 
+        VGG16 weights from ImageNet-1k.
         
     """
     

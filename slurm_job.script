@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --account=amahalan
+#SBATCH --job-name=ir_image_based_localization_training
+#SBATCH -e ./job_errors/img_based_local_error.e%A
+#SBATCH -o ./job_outputs/img_based_local_output.o%A
+#SBATCH --partition=standard
+#SBATCH --nodes=1               
+#SBATCH --ntasks-per-node=8     
+#SBATCH --cpus-per-task=4        
+#SBATCH --mem-per-cpu=4gb                
+#SBATCH --gres=gpu:1            
+#SBATCH --time=00-01:30:00      
+#SBATCH --mail-type=begin        
+#SBATCH --mail-type=end          
+#SBATCH --mail-user=ndaba@arizona.edu
+
+source ~/.bashrc
+conda activate image_based_localization
+
+sh run_ir.sh

@@ -1,0 +1,8 @@
+gitignore
+.ipynb_checkpoints/
+*.pyc
+job_errors
+job_outputs
+results
+runs
+experiments.ipynb
